@@ -1,0 +1,48 @@
+@url = http://localhost:3000
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImV5SmhiR2NpT2lKSVV6STFOaUlzSW5SNWNDSTZJa3BYVkNKOS5leUpsYldGcGJDSTZJbTFoY25ScE1URXpkR2R5WlVCbmJXRnBiQzVqYjIwaUxDSnBaQ0k2TUN3aWFXRjBJam94TnpNME5qZ3pORFE0TENKbGVIQWlPakUzTXpRMk9EY3dORGg5Lkl3LVQ0R2ZDV2t5RE44ZGlhazJteWNOWU1Mak5FX0t6bTJCaFJMc1dLdlkiLCJpZCI6MCwiZW1haWxDb25maXJtZWQiOnRydWUsImlhdCI6MTczNDY4MzQ5MiwiZXhwIjoxNzM0Njg3MDkyfQ.27r_ctpHsOoDba12BEMjpurIzHAOaSGV8_q8sQMk_Y4
+@email = marti11eeey3titgre@gmail.com
+@password = sdfdsfdsfsd
+POST {{url}}/api/auth/register/email
+Content-Type: application/json
+
+{"email": "{{email}}"}
+
+###
+GET {{url}}/api/auth/register/email-verify?secret={{token}}
+Content-Type: application/json
+
+###
+POST {{url}}/api/auth/register/credentials
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "email": "{{email}}",
+    "password": "{{password}}"
+}
+
+###
+
+POST {{url}}/api/auth/register/mfa-verify
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{"code": 141770}
+
+###
+
+POST {{url}}/api/auth/signin
+Content-Type: application/json
+
+{
+    "email": "{{email}}",
+    "password": "{{password}}"
+}
+
+###
+
+POST {{url}}/api/auth/verify
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{"code": 948789}
